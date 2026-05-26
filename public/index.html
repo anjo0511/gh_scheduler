@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GitHub Actions Scheduler</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <h1>
+          GitHub Actions External Scheduler
+          <p>
+            <span id="scheduleCount" class="inline-count">0 workflows</span>
+          </p>
+        </h1>
+      </div>
+      <button
+        id="refreshButton"
+        class="icon-button"
+        type="button"
+        title="Refresh workflows"
+        aria-label="Refresh workflows"
+      >
+        <span aria-hidden="true">↻</span>
+      </button>
+    </header>
+
+    <main class="layout">
+      <details class="info-banner" aria-label="External schedule format">
+        <summary>How it works</summary>
+        <div class="info-content">
+          <span>
+            Add a commented <code># @external-schedule:</code> block to any
+            workflow file. Supported fields are <code>enabled</code>,
+            <code>timezone</code>, <code>ref</code>, <code>inputs</code>, and
+            <code>schedule</code> items with <code>cron</code>. Per-schedule
+            <code>inputs</code>
+            override top-level inputs.
+          </span>
+          <pre><code># @external-schedule:
+#   enabled: true
+#   timezone: "Europe/Stockholm"
+#   ref: "main"
+#   inputs:
+#     environment: "staging"
+#     message: "Scheduled run"
+#   schedule:
+#     - cron: "0 12 * * *"
+#     - cron: "0 18 * * 1-5"
+#       inputs:
+#         environment: "production"</code></pre>
+        </div>
+      </details>
+
+      <section class="schedule-panel" aria-labelledby="scheduleTitle">
+        <span id="scheduleTitle" class="visually-hidden">Scheduled runs</span>
+        <div id="statusBanner" class="status-banner" hidden></div>
+        <div id="scheduleList" class="schedule-list"></div>
+      </section>
+    </main>
+
+    <template id="scheduleTemplate">
+      <article class="schedule-item">
+        <div>
+          <h3></h3>
+          <p class="schedule-meta"></p>
+          <p class="schedule-status"></p>
+        </div>
+      </article>
+    </template>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

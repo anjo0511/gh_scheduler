@@ -1,0 +1,37 @@
+name: day day day
+
+# @external-schedule:
+#   enabled: true
+#   timezone: "Europe/Stockholm"
+#   schedule:
+#     - cron: "0 12 * * s*"
+
+on:
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: "Choose an environment"
+                required: true
+                type: choice
+                options:
+                    - dev
+                    - staging
+                    - production
+
+            message:
+                description: "Custom message"
+                required: true
+                type: string
+
+jobs:
+    hello-world:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Print inputs
+              run: |
+                  echo "Environment: ${{ github.event.inputs.environment }}"
+                  echo "Message: ${{ github.event.inputs.message }}"
+
+            - name: Echo Hello World
+              run: echo "hello world"
