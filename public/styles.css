@@ -9,34 +9,20 @@
   --accent-dark: #0f5186;
   --danger: #b42318;
   --success: #067647;
-  --warn: #b54708;
   --shadow: 0 12px 32px rgba(23, 35, 48, 0.08);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
   min-height: 100vh;
   background: var(--bg);
   color: var(--text);
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
+button { cursor: pointer; font: inherit; }
 button:disabled,
 button:disabled:hover {
   cursor: not-allowed;
@@ -58,21 +44,6 @@ button:disabled:hover {
   gap: 10px;
   margin: 0;
   font-size: clamp(28px, 4vw, 42px);
-  letter-spacing: 0;
-}
-
-.info-icon {
-  width: 22px;
-  height: 22px;
-  display: inline-grid;
-  place-items: center;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--accent-dark);
-  background: #ffffff;
-  font-size: 14px;
-  font-weight: 800;
-  line-height: 1;
 }
 
 .app-header p,
@@ -82,9 +53,7 @@ button:disabled:hover {
   color: var(--muted);
 }
 
-.layout {
-  padding: 0 clamp(18px, 4vw, 48px) 36px;
-}
+.layout { padding: 0 clamp(18px, 4vw, 48px) 36px; }
 
 .info-banner {
   margin-bottom: 14px;
@@ -95,21 +64,9 @@ button:disabled:hover {
   color: #184e77;
 }
 
-.info-banner summary {
-  cursor: pointer;
-  font-weight: 800;
-}
-
-.info-content {
-  display: grid;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.info-banner span {
-  overflow-wrap: anywhere;
-}
-
+.info-banner summary { cursor: pointer; font-weight: 800; }
+.info-content { display: grid; gap: 10px; margin-top: 10px; }
+.info-banner span { overflow-wrap: anywhere; }
 .info-banner pre {
   margin: 2px 0 0;
   padding: 10px 12px;
@@ -120,10 +77,8 @@ button:disabled:hover {
   color: #1b1f24;
 }
 
-.schedule-panel {
-  display: grid;
-  gap: 14px;
-}
+.schedule-panel,
+.schedule-list { display: grid; gap: 14px; }
 
 .visually-hidden {
   position: absolute;
@@ -137,28 +92,10 @@ button:disabled:hover {
   border: 0;
 }
 
-h2,
-h3 {
-  margin: 0;
-  letter-spacing: 0;
-}
-
-h2 {
-  font-size: 20px;
-}
-
-h3 {
-  font-size: 16px;
-}
-
-h3 a {
-  color: var(--accent-dark);
-  text-decoration: none;
-}
-
-h3 a:hover {
-  text-decoration: underline;
-}
+h2, h3 { margin: 0; }
+h3 { font-size: 16px; }
+h3 a { color: var(--accent-dark); text-decoration: none; }
+h3 a:hover { text-decoration: underline; }
 
 .inline-count {
   margin-left: 8px;
@@ -182,77 +119,34 @@ h3 a:hover {
   animation: spin 0.8s linear infinite;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.schedule-list {
-  display: grid;
-  gap: 14px;
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 
 .schedule-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 16px;
-  background: var(--panel);
+  padding: 18px 20px;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 12px;
+  background: var(--panel);
   box-shadow: var(--shadow);
-  padding: 14px;
-  min-height: 82px;
 }
 
-.schedule-item.is-import-failed {
-  border-color: #f4b8b1;
-  background: #fff7f6;
-}
+.schedule-item.is-import-failed { border-color: #f3b8b3; }
+.schedule-status.is-success { color: var(--success); }
+.schedule-status.is-failed { color: var(--danger); }
 
-.schedule-item > div {
-  min-width: 0;
-}
-
-.schedule-meta,
-.schedule-status {
-  overflow-wrap: anywhere;
+.status-banner,
+.empty {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--muted);
 }
 
 .status-banner {
-  border: 1px solid #f1c98c;
-  background: #fff8eb;
-  color: var(--warn);
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 12px;
-}
-
-.empty {
-  padding: 24px;
-  border: 1px dashed var(--line);
-  border-radius: 8px;
-  color: var(--muted);
-  text-align: center;
-}
-
-.is-success {
-  color: var(--success);
-}
-
-.is-failed {
-  color: var(--danger);
-}
-
-@media (max-width: 900px) {
-  .app-header {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .schedule-item {
-    align-items: stretch;
-    flex-direction: column;
-  }
+  border-color: #f6c78f;
+  background: #fff7ed;
+  color: #9a3412;
 }

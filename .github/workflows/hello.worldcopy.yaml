@@ -2,9 +2,10 @@ name: day day day
 
 # @external-schedule:
 #   enabled: true
+#   ref: bahua
 #   timezone: "Europe/Stockholm"
 #   schedule:
-#     - cron: "0 12 * * s*"
+#     - cron: "0 12 * * *"
 
 on:
     workflow_dispatch:
